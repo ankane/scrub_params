@@ -12,7 +12,7 @@ module ScrubParams
         self[k] = scrub_value(k, v)
       end
       if scrubbed_keys.any?
-        ActiveSupport::Notifications.instrument("scrubbed_parameters.action_controller", keys: scrubbed_keys)
+        ActiveSupport::Notifications.instrument("scrubbed_parameters.action_controller", keys: scrubbed_keys.uniq)
       end
       self
     end
@@ -21,20 +21,20 @@ module ScrubParams
 
     def scrub_value(key, value)
       case value
-      when Hash
-        h = {}
-        value.each do |k, v|
-          h[k] = scrub_value(k, v)
-        end
-        h
-      when Array
-        value.map{|v| scrub_value(key, v) }
       when String
         scrubbed_value = ActionController::Base.helpers.strip_tags(value)
         if scrubbed_value != value
-          self.scrubbed_keys << key unless scrubbed_keys.include?(key)
+          self.scrubbed_keys << key
         end
         scrubbed_value
+      when Hash
+        hash = {}
+        value.each do |k, v|
+          hash[k] = scrub_value(k, v)
+        end
+        hash
+      when Array
+        value.map{|v| scrub_value(key, v) }
       else
         value
       end

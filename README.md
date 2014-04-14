@@ -4,9 +4,9 @@
 
 HTML has no business in most parameters. Take the **whitelist approach** and remove it by default.
 
-**Note:** Rails has done amazing work to prevent XSS, but storing `<script>badThings()</script>` in your database makes it much easier to make mistakes.
+**Note:** Rails does amazing work to prevent XSS, but storing `<script>badThings()</script>` in your database makes it much easier to make mistakes.
 
-Works with Rails 3.2 and above.
+Works with Rails 3.2 and above
 
 ## Get Started
 

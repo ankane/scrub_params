@@ -4,6 +4,8 @@
 
 HTML has no business in most parameters. Take the **whitelist approach** and remove it by default.
 
+**Note:** Rails has done amazing work to prevent XSS, but storing `<script>badThings()</script>` in your database makes it much easier to make mistakes.
+
 ## Get Started
 
 Add this line to your application’s Gemfile:

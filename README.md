@@ -40,7 +40,7 @@ Scrubbed parameters: name
 
 ### Whitelist Actions
 
-To prevent certain actions from being scrubbed, use:
+To skip scrubbing for certain actions, use:
 
 ```ruby
 skip_before_filter :scrub_params, only: [:create, :update]

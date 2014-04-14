@@ -1,7 +1,6 @@
 require "scrub_params/version"
 require "active_support/hash_with_indifferent_access"
 require "action_controller"
-require "sanitize"
 require "scrub_params/parameters"
 require "scrub_params/controller"
 require "scrub_params/log_subscriber"

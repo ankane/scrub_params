@@ -28,10 +28,10 @@ class TestScrubParams < Minitest::Test
     assert_equal "Ben & Jerry’s", params["name"]
   end
 
-  def test_arrow
-    params = ActionController::Parameters.new({"name" => "ruby -> #winning"})
+  def test_arrows
+    params = ActionController::Parameters.new({"name" => "2 > 1 and 1 < 2"})
     params.scrub!
-    assert_equal "ruby -> #winning", params["name"]
+    assert_equal "2 > 1 and 1 < 2", params["name"]
   end
 
 end

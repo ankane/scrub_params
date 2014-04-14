@@ -32,7 +32,7 @@ module ScrubParams
       when String
         # gsub specific cases
         # safer than CGI.unescapeHTML
-        scrubbed_value = Sanitize.clean(value).gsub("&gt;", ">").gsub("&amp;", "&")
+        scrubbed_value = ActionController::Base.helpers.strip_tags(value)
         if scrubbed_value != value
           self.scrubbed_keys << key unless scrubbed_keys.include?(key)
         end

@@ -1,6 +1,6 @@
 # Scrub Params
 
-:lock: Secure Rails parameters by default
+:lock: Safer Rails parameters by default
 
 JavaScript and HTML have no business in most parameters. Take the **whitelist approach** and remove them by default.
 

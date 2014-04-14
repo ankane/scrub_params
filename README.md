@@ -2,8 +2,6 @@
 
 :lock: Secure Rails parameters by default
 
-> Insecure by default is insecure
-
 HTML has no business in most parameters. Take the **whitelist approach** and remove it by default.
 
 ## Get Started

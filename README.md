@@ -2,7 +2,7 @@
 
 :lock: Secure Rails parameters by default
 
-HTML and JavaScript have no business in most parameters. Take the **whitelist approach** and remove them by default.
+JavaScript and HTML have no business in most parameters. Take the **whitelist approach** and remove them by default.
 
 **Note:** Rails does amazing work to prevent [cross-site scripting (XSS)](http://en.wikipedia.org/wiki/Cross-site_scripting), but storing `<script>badThings()</script>` in your database makes it much easier to make mistakes.
 

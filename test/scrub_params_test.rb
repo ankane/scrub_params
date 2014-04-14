@@ -22,4 +22,16 @@ class TestScrubParams < Minitest::Test
     assert_equal expected, params
   end
 
+  def test_ampersand
+    params = ActionController::Parameters.new({"name" => "Ben & Jerry’s"})
+    params.scrub!
+    assert_equal "Ben & Jerry’s", params["name"]
+  end
+
+  def test_arrow
+    params = ActionController::Parameters.new({"name" => "ruby -> #winning"})
+    params.scrub!
+    assert_equal "ruby -> #winning", params["name"]
+  end
+
 end

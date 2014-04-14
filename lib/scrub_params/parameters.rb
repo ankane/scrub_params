@@ -30,7 +30,9 @@ module ScrubParams
       when Array
         value.map{|v| scrub_value(key, v) }
       when String
-        scrubbed_value = Sanitize.clean(value)
+        # gsub specific cases
+        # safer than CGI.unescapeHTML
+        scrubbed_value = Sanitize.clean(value).gsub("&gt;", ">").gsub("&amp;", "&")
         if scrubbed_value != value
           self.scrubbed_keys << key unless scrubbed_keys.include?(key)
         end

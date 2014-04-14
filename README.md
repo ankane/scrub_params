@@ -4,7 +4,7 @@
 
 HTML has no business in most parameters. Take the **whitelist approach** and remove it by default.
 
-**Note:** Rails does amazing work to prevent XSS, but storing `<script>badThings()</script>` in your database makes it much easier to make mistakes.
+**Note:** Rails does amazing work to prevent [cross-site scripting (XSS)](http://en.wikipedia.org/wiki/Cross-site_scripting), but storing `<script>badThings()</script>` in your database makes it much easier to make mistakes.
 
 Works with Rails 3.2 and above
 
@@ -16,7 +16,7 @@ Add this line to your application’s Gemfile:
 gem 'scrub_params'
 ```
 
-You now have another line of defense against [cross-site scripting (XSS)](http://en.wikipedia.org/wiki/Cross-site_scripting).
+You now have another line of defense against XSS.
 
 ### Test It
 

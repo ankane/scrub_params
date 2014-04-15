@@ -6,15 +6,16 @@ module ScrubParams
       attr_accessor :scrubbed_keys
     end
 
-    def scrub!
+    def scrub
       self.scrubbed_keys = []
+      hash = {}
       each_pair do |k, v|
-        self[k] = scrub_value(k, v)
+        hash[k] = scrub_value(k, v)
       end
       if scrubbed_keys.any?
         ActiveSupport::Notifications.instrument("scrubbed_parameters.action_controller", keys: scrubbed_keys.uniq)
       end
-      self
+      hash
     end
 
     protected

@@ -23,7 +23,7 @@ task :benchmark do
   Benchmark.bm do |bm|
     bm.report do
       list.each do |params|
-        params.scrub!
+        params.scrub
       end
     end
   end

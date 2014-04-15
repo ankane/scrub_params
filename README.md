@@ -38,6 +38,14 @@ And you should see this in your logs:
 Scrubbed parameters: name
 ```
 
+### Original Parameters
+
+Access the original parameters with:
+
+```ruby
+unscrubbed_params
+```
+
 ### Whitelist Actions
 
 To skip scrubbing for certain actions, use:

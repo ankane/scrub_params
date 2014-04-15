@@ -11,7 +11,6 @@ class TestScrubParams < Minitest::Test
           "make" => "<blink>Tesla</blink>"
         }
       })
-    params.scrub!
     expected = {
       "name" => "Hello alert('World')",
       "tags" => ["awesome", "hack"],
@@ -19,19 +18,17 @@ class TestScrubParams < Minitest::Test
         "make" => "Tesla"
       }
     }
-    assert_equal expected, params
+    assert_equal expected, params.scrub
   end
 
   def test_ampersand
     params = ActionController::Parameters.new({"name" => "Ben & Jerry’s"})
-    params.scrub!
-    assert_equal "Ben & Jerry’s", params["name"]
+    assert_equal "Ben & Jerry’s", params.scrub["name"]
   end
 
   def test_arrows
     params = ActionController::Parameters.new({"name" => "2 > 1 and 1 < 2"})
-    params.scrub!
-    assert_equal "2 > 1 and 1 < 2", params["name"]
+    assert_equal "2 > 1 and 1 < 2", params.scrub["name"]
   end
 
 end
